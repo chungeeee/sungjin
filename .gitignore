@@ -21,3 +21,4 @@ laravel-echo-server.lock
 laravel-echo-server.json
 /app/Http/Controllers/SmsController.php
 .vscode/*
+storage/app/.DS_Store

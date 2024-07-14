@@ -1778,7 +1778,7 @@ class ManagementController extends Controller
                         }
 
                         // 중복코드
-                        $code = DB::table("material")->select("no")->where('contract_info_no',$_INS['contract_info_no'])->where('code',$_INS['code'])->where('save_status','Y')->first();
+                        $code = DB::table("material")->select("no")->where('contract_info_no',$request->contract_info_no)->where('code',$_INS['code'])->where('save_status','Y')->first();
                         if(!empty($code->no))
                         {
                             continue;
