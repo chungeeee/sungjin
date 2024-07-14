@@ -1,0 +1,237 @@
+<style>
+table
+{
+    border-collapse:separate;
+
+    border-spacing:0;
+}
+
+th, td{ vertical-align:middle;}
+
+a {text-decoration:inherit;color:inherit;}
+
+fieldset{border:none;margin:0; padding:0;}
+
+img{border:0 none;}
+
+form{margin:0;padding:0; }
+
+legend{display:none; margin:0; padding:0;}
+
+ul,ol,li {list-style:none;}
+
+em{ font-style:normal;}
+
+hr{ width:100%; height:1px; background-color:#cdcdcd; margin:20px 0px; border:0px;}
+
+hr.dott1{margin:5px 0px; background-color:transparent; background-image:url(../../np2assets/images/inc/hr_dott_bg.gif); background-position:left top; background-repeat:repeat-x;}
+
+h2{ font-size:28px; font-weight:bold; line-height:28px; color:#000;}
+
+h3{ font-size:16px; font-weight:normal; color:#4d4d4d; line-height:28px; display:inline-block; padding:0px; margin:0px 0px 0px 0px;}
+
+h4{ background-image:url(/img/icons/dot_h4.png); background-position:left center; background-repeat:no-repeat; font-size:17px; font-weight:bold; color:#444; line-height:24px; display:inline-block; padding:0px 0px 0px 12px; margin:0px 0px 0px 0px;}
+
+h5{ background-image:url(/img/icons/dott_h5.png); background-position:1px 4px; background-repeat:no-repeat; font-size:15px; font-weight:bold; color:#353535; line-height:24px; display:inline-block; padding:0px 0px 0px 17px; margin:0px 0px 0px 0px;}
+
+h6{ background-image:url(/img/icons/dott_h6.gif); background-position:4px 7px; background-repeat:no-repeat; font-size:13px; font-weight:bold; color:#353535; line-height:22px; display:inline-block; padding:0px 0px 0px 15px; margin:0px 0px 0px 0px;}
+
+h4 span,h5 span{ font-size:13px; font-weight:normal; margin:0px 0px 0px 5px; line-height:16px; padding:4px 0px 0px 0px; letter-spacing:-1px; display:inline-block;}
+
+/* p */
+p{ width:100%; font-size:13px; color:#454545; line-height:22px; display:inline-block; padding:0px; margin:0px 0px 0px 0px;}
+p span label{ line-height:22px;}
+
+/* table */
+table.table_col{ width:100%; padding:0px; margin:0px 0px 20px 0px; border-top:2px solid #888; border-right:1px solid #e0e0e0;}
+table.table_col thead tr{ background-color:#fbfbfb; margin:0px; border-bottom:1px solid #e0e0e0;}
+table.table_col thead tr th{ background-image:url(/img/icons/table_col_th_line.gif); background-position:right top; background-repeat:no-repeat; font-size:12px; text-align:center; color:#656565; line-height:22px; padding:5px 0px 5px 0px; margin:0px; border-bottom:1px solid #e0e0e0;}
+table.table_col thead tr th:first-child{ border-left:1px solid #e0e0e0; padding:5px 0px;}
+table.table_col tbody tr th,
+table.table_col tbody tr td{ min-height:22px; font-size:12px; text-align:center; font-weight:normal; color:#454545; line-height:22px; padding:5px 10px; margin:0px; border-bottom:1px solid #e0e0e0; border-left:1px solid #e0e0e0; background: #fff;}
+table.table_col tbody tr td a{ color:#454545;}
+table.table_col tbody tr td ul.ul_list > li{ font-size:12px;}
+table.table_col tbody tr td ul.ul_list > li > li{ font-size:12px;}
+
+/* ul */
+ul.ul_list{ width:100%; display:inline-block; padding:0px; margin:0px 0px 10px 0px;}
+ul.ul_list li{ background-position:3px 5px; background-repeat:no-repeat; font-size:13px; font-weight:normal; color:#454545; line-height:22px; padding:0px 0px 0px 17px; margin:0px 0px 0px 0px;}
+
+/* contents */
+.sub_body{ width:100%; }
+.sub_body .contents{ width:680px;margin:0 auto; }
+.sub_body .contents .contents_info{ margin-top : 20px; }
+</style>
+
+<div>
+	<table style="BORDER-COLLAPSE: collapse;" cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+		<tr>
+			<td>
+				<table align="center" width="100%" style="margin-top:50px; border-bottom:1px solid black;">
+					<tr>
+						<td align="center" style="font-size:23pt; padding:5px;"><b>채 권 계 산 서</b></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" style="margin-top:10px;">
+					<tr>
+						<td style="font-size:10pt;">채권자 : </td>
+					</tr>
+					<tr>
+						<td style="font-size:10pt; padding-top:5px;">채무자 : [고객명] ([마스킹주민번호])</td>
+					</tr>
+					<tr>
+						<td style="font-size:10pt; padding-top:5px;">위 사건과 관련하여 채권내역을 아래와 같이 제출합니다. 기준일 : ([오늘년월일dot])</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" style="BORDER-COLLAPSE: collapse; margin-top:10px;" cellSpacing=0 cellPadding=0 >
+					<thead>
+					<tr>
+						<td class="summary" width="15%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>계좌번호</b>
+						</td>
+						<td class="summary" width="15%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>대출과목</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>원금잔액</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>비용잔액</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>인수전</b><br>
+							<b>이자잔액</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>인수후</b><br>
+							<b>이자잔액</b>
+						</td>
+						<td class="summary" width="15%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>합 계</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#EFEFEF" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>이자</b><br>
+							<b>산출근거</b>
+						</td>
+					</tr>
+					<thead>
+					<tr>
+						<td align="center" style="padding:3px;border:1px solid black;font-size:9pt;">1679494</td>
+						<td align="center" style="padding:3px;border:1px solid black;font-size:9pt;">신용카드</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">252,100</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">76,821</td>
+
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">1,010,962</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">88,172</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">1,428,055</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="right" style="padding:3px;border:1px solid black;font-size:10pt;"><b>합 계&nbsp&nbsp</b></td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">252,100</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">76,821</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">1,010,962</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">88,172</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">1,428,055</td>
+						<td align="center" style="padding:3px;border:1px solid black;font-size:10pt;">아래참조</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<table align="center" style="margin-top:10px; border-bottom:1px solid black; width:400px">
+					<tr>
+						<td align="center" style="font-size:15pt; padding:5px;"><b>이 자 산 출 근 거</b></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<table width="100%" style="BORDER-COLLAPSE: collapse; border:1px solid black; margin-top:10px;" cellSpacing=0 cellPadding=0 >
+					<tr>
+						<td class="summary" width="14%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>계좌번호</b>
+						</td>
+						<td class="summary" width="14%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>대출과목</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>원금</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>시작일</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>종료일</b>
+						</td>
+						<td class="summary" width="5%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>이율</b>
+						</td>
+						<td class="summary" width="6%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>일수</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>인수전</b><br>
+							<b>이자금액</b>
+						</td>
+						<td class="summary" width="11%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>인수후</b><br>
+							<b>이자금액</b>
+						</td>
+						<td class="summary" width="6%" bgcolor="#E6E6E6" align="center" style="padding:3px;border:1px solid black;font-size:10pt;">
+							<b>비고</b>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>1679494</td>
+						<td rowspan="2" align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>신용카드</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>252,100</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>2021-10-01</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>2023-02-03</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>26.00%</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>491</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>1,010,962</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>88,172</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'></td>
+					</tr>
+					<tr>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>
+							<font color="red">0</font>
+						</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>
+							<font color="red">2023-02-03</font>
+						</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'></td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'></td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'></td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>
+							<font color="red">0</font>
+						</td>
+						<td align="right" style='padding:3px;border:1px solid black;font-size:9pt;'>
+							<font color="red">0</font>
+						</td>
+						<td align="center" style='padding:3px;border:1px solid black;font-size:9pt;'>
+							<font color="red">회수</font>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="7" align="right" style="padding:3px;border:1px solid black;font-size:10pt;"><b>합 계&nbsp&nbsp</b></td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">1,010,962</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;">88,172</td>
+						<td align="right" style="padding:3px;border:1px solid black;font-size:9pt;"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>

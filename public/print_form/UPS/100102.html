@@ -1,0 +1,138 @@
+<style>
+    .tableSTD { padding-left:10px; }
+    .fntBold { font-weight:bold; }
+    .txtC { text-align:center; }
+    .txtR { text-align:right; }
+    .main_title{
+        font-size:18pt;
+    }
+    .main_contents{
+        font-size:11pt;
+    }
+    .main_minor_contents{
+        font-size:10pt;
+    }
+    .borderAll{
+        border-style:solid;
+        border-color:#000000;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+    }
+    .borderBottom{
+        border-style:solid;
+        border-color:#000000;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-top-width: 0px;
+        border-bottom-width: 1px;
+    }
+</style>
+<div style="padding-left:40px;padding-right:40px;">
+    <div class="main_contents" style="padding-left:15px;padding-right:15px;border-style:double;border-color:black;margin-top:5px">
+        <div class="main_title fntBold txtC" style="margin-top:40px;margin-bottom:40px;">
+            고객정보 적법수집 확인서
+        </div>
+        <div style="margin-bottom:40px;">
+            당사에서 수집한 고객 정보는 외부에서 불법적으로 취득한 정보를 활용치 않고<br> 정상적인 영업활동을 통해 모집한 대부중개건임을 확인합니다.
+        </div>
+        <div style="margin-bottom:15px;">
+            ㅇ 제공할 고객정보
+        </div>
+        <div style="margin-bottom:40px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <col width="15%"><col width="35%"><col width="15%"><col width="35%">
+                <tbody>
+                <tr height="30">
+                    <td class="borderAll txtC">고객명</td>
+                    <td class="borderAll tableSTD" colspan="3">[고객명]</td>
+                </tr>
+                <tr height="30">
+                    <td class="borderAll txtC">생년월일</td>
+                    <td class="borderAll tableSTD">[생년월일]</td>
+                    <td class="borderAll txtC">성별</td>
+                    <td class="borderAll tableSTD">[중개성별]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-bottom:15px;">
+            ㅇ 제공할 최초 수집 경로 (해당사항에 <input type='checkbox' checked disabled> 체크할 것)
+        </div>
+        <div style="margin-bottom:30px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <col width="30%"><col width="70%">
+                <tbody>
+                <tr height="30">
+                <td colspan="2" class="borderAll tableSTD"><input type='checkbox' [체크-고객연락] disabled>&nbsp;고객이 먼저 중개인에게 연락함</td>
+                </tr>
+                <tr height="30">
+                <td class="borderAll txtC">중개인 연락처를 알게된 경로</td>
+                <td class="borderAll tableSTD">
+                    인터넷 광고 ( <input type='checkbox' [체크-중개인연락처고객] disabled>&nbsp;고객이 직접 전화&nbsp;/&nbsp;<input type='checkbox' [체크-중개인연락처홈페이지] disabled>&nbsp;홈페이지 등 연락처 남김<br>
+                    <input type='checkbox' [체크-중개인연락처신문] disabled>&nbsp;신문 광고&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type='checkbox' [체크-중개인연락처전단] disabled>&nbsp;전단지 공고<br>
+                    <input type='checkbox' [체크-중개인연락처기타] disabled>&nbsp;기타&nbsp;(&nbsp;[체크-중개인연락처상세]&nbsp;)
+                </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-bottom:30px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <col width="30%"><col width="70%">
+                <tbody>
+                <tr height="30">
+                <td colspan="2" class="borderAll tableSTD"><input type='checkbox' [체크-중개인연락] disabled>&nbsp;중개인이 먼저 고객에게 연락함</td>
+                </tr>
+                <tr height="30">
+                <td class="borderAll txtC">중개인 연락처를 알게된 경로</td>
+                <td class="borderAll tableSTD">
+                    <input type='checkbox' [체크-고객연락처제휴] disabled>&nbsp;제휴처 제공<br>
+                    <input type='checkbox' [체크-고객연락처기타] disabled>&nbsp;기타&nbsp;(&nbsp;[체크-고객연락처상세]&nbsp;)
+                </td>
+                </tr>
+                <tr height="30">
+                    <td class="borderAll txtC">고객 연락 방법</td>
+                    <td class="borderAll tableSTD">
+                        <input type='checkbox' [체크-고객연락전화] disabled>&nbsp;전화&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type='checkbox' [체크-고객연락SMS] disabled>&nbsp;SMS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type='checkbox' [체크-고객연락EMAIL] disabled>&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type='checkbox' [체크-고객연락우편물] disabled>&nbsp;우편물&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type='checkbox' [체크-고객연락방문] disabled>&nbsp;직접 방문<br>
+                        <input type='checkbox' [체크-고객연락기타] disabled>&nbsp;기타&nbsp;(&nbsp;[체크-고객연락상세]&nbsp;)
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="txtC" style="margin-bottom:50px;">
+            [오늘년월일]
+        </div>
+        <div class="txtR" style="margin-bottom:40px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <col width="75%"><col width="23%"><col width="2%">
+                <tbody>
+                <tr>
+                <td class="txtR">대부중개 대표자</td>
+                <td class="borderBottom txtC">[대표명]</td>
+                <td class="txtC">(인)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="txtR" style="margin-bottom:50px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <col width="75%"><col width="23%"><col width="2%">
+                <tbody>
+                <tr>
+                <td class="txtR">담당자</td>
+                <td class="borderBottom txtC">[담당자]</td>
+                <td class="txtC">(인)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

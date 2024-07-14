@@ -1,0 +1,1487 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "HOMEPAGE API",
+        "description": "<b>[[JSON재생성]](/swagger/make.php?target=homepage)</b><br>",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/homepage/loanappactionlog": {
+            "post": {
+                "tags": [
+                    "LOAN APPLICATION"
+                ],
+                "summary": "홈페이지 액션 로그 입력",
+                "parameters": [
+                    {
+                        "name": "loan_app_no",
+                        "in": "query",
+                        "description": "신청 번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "home_visit_no",
+                        "in": "query",
+                        "description": "방문 일련 번호",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "act_stp_cd",
+                        "in": "query",
+                        "description": "액션 단계 코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "act_sect",
+                        "in": "query",
+                        "description": "액션 구분 코드 CSQ 1 인증 2 일반 3 동의",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "succ_yn",
+                        "in": "query",
+                        "description": "성공여부",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rslt_cd",
+                        "in": "query",
+                        "description": "결과코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "act_expl",
+                        "in": "query",
+                        "description": "액션설명(미입력시 액션단계코드로 자동입력)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "visit_ip",
+                        "in": "query",
+                        "description": "방문IP ",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = N:error/Y:success' , 'message' : '처리 내용'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/homepage/loanappcert": {
+            "post": {
+                "tags": [
+                    "LOAN APPLICATION"
+                ],
+                "summary": "본인인증 결과 연동 - 입력시 액션로그 입력",
+                "parameters": [
+                    {
+                        "name": "loan_app_no",
+                        "in": "query",
+                        "description": "신청번호",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "1234"
+                        }
+                    },
+                    {
+                        "name": "re_no",
+                        "in": "query",
+                        "description": "주민등록번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ph2_com",
+                        "in": "query",
+                        "description": "통신사코드(11:SK, 12:KT, 13:LGT, 15:SK알뜰폰, 16:KT알뜰폰, 17:LG알뜰폰)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ph21",
+                        "in": "query",
+                        "description": "핸드폰앞",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ph22",
+                        "in": "query",
+                        "description": "핸드폰국번",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ph23",
+                        "in": "query",
+                        "description": "핸드폰뒤",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identified_cd",
+                        "in": "query",
+                        "description": "본인확인구분(04:공인인증, 05:휴대폰인증, 07:신용카드인증)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "05"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = Y:success, N1:신청번호 미입력, N2:본인인증 결과 미입력, N3:존재하지 않는 신청번호, N4:심사중 신청서 없음, N5:기거절, N6:심사중' , 'message' : '처리 내용'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/homepage/loanappfirst": {
+            "post": {
+                "tags": [
+                    "LOAN APPLICATION"
+                ],
+                "summary": "홈페이지 대출신청",
+                "parameters": [
+                    {
+                        "name": "agree_yn01",
+                        "in": "query",
+                        "description": "공통(신용대출) - 조회동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn02",
+                        "in": "query",
+                        "description": "공통(신용대출) - 수집이용동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn03",
+                        "in": "query",
+                        "description": "공통(신용대출) - 제공동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn04",
+                        "in": "query",
+                        "description": "공통(신용대출) - 고유식별정보처리(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn05",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-수집이용동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn06",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn07",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn08",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn09",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn10",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn11",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-수집이용동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn12",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn13",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn14",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn15",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn16",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn17",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-제공동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn18",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn19",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn20",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn21",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn22",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "nr_agree",
+                        "in": "query",
+                        "description": "공통(신용대출) - 연계대출동의여부",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "path_hom_cd",
+                        "in": "query",
+                        "description": "공통 - 홈페이지 접수구분(모바일:M, PC:P)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "kor_nm",
+                        "in": "query",
+                        "description": "공통(신용대출) - 고객명",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "re_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 주민등록번호",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "req_gds_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 신청상품코드",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "19322"
+                        }
+                    },
+                    {
+                        "name": "hm_zip",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택우편번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "12345"
+                        }
+                    },
+                    {
+                        "name": "hm_addr_1",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택기본주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 은행로 25 안원빌딩"
+                        }
+                    },
+                    {
+                        "name": "hm_addr_2",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택상세주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "6층 리드코프"
+                        }
+                    },
+                    {
+                        "name": "hm_addr_3",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택지번주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 영등포구 여의도동"
+                        }
+                    },
+                    {
+                        "name": "hm_tel_no1",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택번호앞자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "02"
+                        }
+                    },
+                    {
+                        "name": "hm_tel_no2",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택번호가운데자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "2126"
+                        }
+                    },
+                    {
+                        "name": "hm_tel_no3",
+                        "in": "query",
+                        "description": "공통(신용대출) - 자택번호뒷자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "5050"
+                        }
+                    },
+                    {
+                        "name": "mbphn_co_sect",
+                        "in": "query",
+                        "description": "공통(신용대출) - 통신사코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "11"
+                        }
+                    },
+                    {
+                        "name": "mbphn_no1",
+                        "in": "query",
+                        "description": "공통(신용대출) - 휴대폰번호앞자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "010"
+                        }
+                    },
+                    {
+                        "name": "mbphn_no2",
+                        "in": "query",
+                        "description": "공통(신용대출) - 휴대폰번호가운데자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1234"
+                        }
+                    },
+                    {
+                        "name": "mbphn_no3",
+                        "in": "query",
+                        "description": "공통(신용대출) - 휴대폰번호뒷자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "5678"
+                        }
+                    },
+                    {
+                        "name": "job_sect_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직업구분코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1"
+                        }
+                    },
+                    {
+                        "name": "job_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직업코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1117"
+                        }
+                    },
+                    {
+                        "name": "ofc_nm",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장명",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "리드코프"
+                        }
+                    },
+                    {
+                        "name": "ofc_zip",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장우편번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "12345"
+                        }
+                    },
+                    {
+                        "name": "ofc_addr_1",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장기본주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 은행로 25 안원빌딩"
+                        }
+                    },
+                    {
+                        "name": "ofc_addr_2",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장상세주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "6층 리드코프"
+                        }
+                    },
+                    {
+                        "name": "ofc_addr_3",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장지번주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 영등포구 여의도동"
+                        }
+                    },
+                    {
+                        "name": "ofc_tel_no1",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장번호앞자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "02"
+                        }
+                    },
+                    {
+                        "name": "ofc_tel_no2",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장번호가운데자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "2126"
+                        }
+                    },
+                    {
+                        "name": "ofc_tel_no3",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장번호뒷자리",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "5050"
+                        }
+                    },
+                    {
+                        "name": "yy_incm",
+                        "in": "query",
+                        "description": "공통(신용대출) - 연소득",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "100000000"
+                        }
+                    },
+                    {
+                        "name": "rmt_bk_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 입금은행",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "088"
+                        }
+                    },
+                    {
+                        "name": "rmt_act_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 계좌번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "123456789012"
+                        }
+                    },
+                    {
+                        "name": "email_addr",
+                        "in": "query",
+                        "description": "공통(신용대출) - 이메일",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "email@leadcorp.co.kr"
+                        }
+                    },
+                    {
+                        "name": "liv_kind_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 주거 종류 코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "01"
+                        }
+                    },
+                    {
+                        "name": "liv_sect_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 주거 구분 코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "02"
+                        }
+                    },
+                    {
+                        "name": "rsdn_term",
+                        "in": "query",
+                        "description": "공통(신용대출) - 거주기간",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "24 "
+                        }
+                    },
+                    {
+                        "name": "wrcp_yn",
+                        "in": "query",
+                        "description": "공통(신용대출) - 맞벌이 유무",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "N"
+                        }
+                    },
+                    {
+                        "name": "work_term",
+                        "in": "query",
+                        "description": "공통(신용대출) - 직장근속기간",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "12"
+                        }
+                    },
+                    {
+                        "name": "ptmt_rct_dest_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 우편물수령처코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1"
+                        }
+                    },
+                    {
+                        "name": "req_am",
+                        "in": "query",
+                        "description": "공통(신용대출) - 신청금액",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1000000"
+                        }
+                    },
+                    {
+                        "name": "pi_pln_dd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 이자납입일자",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "05 "
+                        }
+                    },
+                    {
+                        "name": "rct_sect",
+                        "in": "query",
+                        "description": "공통(신용대출) - 신청경로",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "01"
+                        }
+                    },
+                    {
+                        "name": "me_cnfm_sect",
+                        "in": "query",
+                        "description": "공통(신용대출) - 인증방법",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "05"
+                        }
+                    },
+                    {
+                        "name": "bizr_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 사업자번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "000000000"
+                        }
+                    },
+                    {
+                        "name": "advt_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 광고번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "A00001"
+                        }
+                    },
+                    {
+                        "name": "wedd_sect",
+                        "in": "query",
+                        "description": "공통(신용대출) - 결혼유무",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "02"
+                        }
+                    },
+                    {
+                        "name": "visit_seq_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 방문자번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "1"
+                        }
+                    },
+                    {
+                        "name": "nonintr_cd",
+                        "in": "query",
+                        "description": "공통(신용대출) - 무이자코드",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "rct_ch",
+                        "in": "query",
+                        "description": "공통(신용대출) - 접수경로",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "03"
+                        }
+                    },
+                    {
+                        "name": "kwd_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 키워드번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "K4100"
+                        }
+                    },
+                    {
+                        "name": "agent_no",
+                        "in": "query",
+                        "description": "공통(신용대출) - 에이전트번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "agent000"
+                        }
+                    },
+                    {
+                        "name": "befpage",
+                        "in": "query",
+                        "description": "공통(신용대출) - 이전페이지",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "car_no",
+                        "in": "query",
+                        "description": "차량담보대출 - 차량번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "99가1234"
+                        }
+                    },
+                    {
+                        "name": "car_type",
+                        "in": "query",
+                        "description": "차량담보대출 - 차종",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "싼타페"
+                        }
+                    },
+                    {
+                        "name": "car_model",
+                        "in": "query",
+                        "description": "차량담보대출 - 연식",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "2018"
+                        }
+                    },
+                    {
+                        "name": "car_own_nm",
+                        "in": "query",
+                        "description": "차량담보대출 - 명의자명",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "홍길동"
+                        }
+                    },
+                    {
+                        "name": "security_own_nm",
+                        "in": "query",
+                        "description": "부동산/전세담보대출 - 명의자명",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "홍길동"
+                        }
+                    },
+                    {
+                        "name": "security_zip",
+                        "in": "query",
+                        "description": "부동산/전세담보대출 - 물건지주소_우편번호",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "12345"
+                        }
+                    },
+                    {
+                        "name": "security_bas_addr",
+                        "in": "query",
+                        "description": "부동산/전세담보대출 - 물건지주소_기본주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 은행로 25 안원빌딩"
+                        }
+                    },
+                    {
+                        "name": "security_dtl_addr",
+                        "in": "query",
+                        "description": "부동산/전세담보대출 - 물건지주소_상세주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "6층 리드코프"
+                        }
+                    },
+                    {
+                        "name": "security_jibun_addr",
+                        "in": "query",
+                        "description": "부동산/전세담보대출 - 물건지주소_지번주소",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "서울특별시 영등포구 여의도동"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = N:error/Y:success' , 'message' : '결과메시지' , 'loanAppNo' : '성공시 신청번호'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/homepage/loanappagree": {
+            "post": {
+                "tags": [
+                    "LOAN APPLICATION"
+                ],
+                "summary": "개인정보 활용동의 입력",
+                "parameters": [
+                    {
+                        "name": "loan_app_no",
+                        "in": "query",
+                        "description": "신청번호 또는 상담번호",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "1234"
+                        }
+                    },
+                    {
+                        "name": "agree_yn01",
+                        "in": "query",
+                        "description": "공통(신용대출) - 조회동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn02",
+                        "in": "query",
+                        "description": "공통(신용대출) - 수집이용동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn03",
+                        "in": "query",
+                        "description": "공통(신용대출) - 제공동의(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn04",
+                        "in": "query",
+                        "description": "공통(신용대출) - 고유식별정보처리(필수) ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn05",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-수집이용동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn06",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn07",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn08",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn09",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn10",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)서비스안내-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn11",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-수집이용동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn12",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn13",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn14",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn15",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn16",
+                        "in": "query",
+                        "description": "공통(신용대출) - (수집이용)사은행사-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn17",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-제공동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn18",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-광고수신동의 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn19",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-SMS ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn20",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-이메일 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn21",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-전화 ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "agree_yn22",
+                        "in": "query",
+                        "description": "공통(신용대출) - (제공)서비스안내-DM ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    },
+                    {
+                        "name": "nr_agree",
+                        "in": "query",
+                        "description": "공통(신용대출) - 연계대출동의여부",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "Y"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = N:error/Y:success' , 'message' : '결과메시지' , 'loanAppNo' : '신청번호 또는 상담번호'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/homepage/loanappagreechk": {
+            "post": {
+                "tags": [
+                    "LOAN APPLICATION"
+                ],
+                "summary": "개인정보 활용동의 입력 가능여부 확인",
+                "parameters": [
+                    {
+                        "name": "loan_app_no",
+                        "in": "query",
+                        "description": "신청번호 또는 상담번호",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "1234"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = N:error/Y:success' , 'message' : '결과메시지' , 'loanAppNo' : '신청번호 또는 상담번호'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/homepage/addcomplain": {
+            "post": {
+                "tags": [
+                    "ETC"
+                ],
+                "summary": "불만의 소리",
+                "requestBody": {
+                    "description": "Add complain",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HomepageComplain"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "데이터 확인 - { 'code': '결과 = N:error/Y:success' , 'message' : '처리 내용'}",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiResponse": {
+                "title": "Api response",
+                "description": "등록, 수정 등 Api 공통 응답부 : code는 정의된 내용만 사용할 것.",
+                "properties": {
+                    "code": {
+                        "title": "Code",
+                        "description": "결과코드",
+                        "type": "integer",
+                        "format": "string"
+                    },
+                    "message": {
+                        "title": "Message",
+                        "description": "결과 메시지",
+                        "type": "string"
+                    },
+                    "loanAppNo": {
+                        "title": "LoanAppNo",
+                        "description": "신청번호",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "HomepageComplain": {
+                "title": "불만의소리 model",
+                "description": "불만의소리 스키마",
+                "required": [
+                    "cust_name",
+                    "ssn",
+                    "cust_passwd",
+                    "cust_info_agree",
+                    "complain_div",
+                    "ph21",
+                    "ph22",
+                    "ph23",
+                    "cust_email",
+                    "complain_memo"
+                ],
+                "properties": {
+                    "cust_name": {
+                        "title": "cust_name",
+                        "description": "이름",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "ssn": {
+                        "title": "ssn",
+                        "description": "생년월일",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "cust_passwd": {
+                        "title": "cust_passwd",
+                        "description": "비밀번호",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "cust_info_agree": {
+                        "title": "cust_info_agree",
+                        "description": "개인 정보 수집 및 이용 동의 (Y/N)",
+                        "type": "string",
+                        "maximum": 1
+                    },
+                    "complain_div": {
+                        "title": "complain_div",
+                        "description": "상담 분류",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "ph21": {
+                        "title": "ph21",
+                        "description": "휴대폰 첫번째 자리",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "ph22": {
+                        "title": "ph22",
+                        "description": "휴대폰 두번째 자리",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "ph23": {
+                        "title": "ph23",
+                        "description": "휴대폰 세번째 자리",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "cust_email": {
+                        "title": "cust_email",
+                        "description": "고객이메일",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "complain_memo": {
+                        "title": "complain_memo",
+                        "description": "민원내용",
+                        "type": "string",
+                        "format": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "LOAN APPLICATION",
+            "description": "대출신청"
+        },
+        {
+            "name": "ETC",
+            "description": "대출신청 외"
+        }
+    ]
+}
